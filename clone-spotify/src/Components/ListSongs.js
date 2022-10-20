@@ -12,7 +12,7 @@ const ListSongs = () => {
         setIdSong(song.id)
     }, [song])
     return (
-        <div className="col-span-2 p-3 overflow-y-scroll">
+        <div className="sm:col-span-2 p-3 overflow-y-scroll col-span-3">
             <table className="table-auto w-full">
                 <thead className="text-white h-9">
                     <tr>
