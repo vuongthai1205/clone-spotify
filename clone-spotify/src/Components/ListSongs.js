@@ -1,8 +1,16 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Songs from "../Context";
 
 const ListSongs = () => {
-    const {DataSongs} = useContext(Songs)
+    const {DataSongs, handleSetSong, song} = useContext(Songs)
+    const [idSong, setIdSong] = useState(0)
+    const handlePlaySong = (idSong) => {
+        setIdSong(idSong)
+        handleSetSong(idSong)
+    }
+    useEffect(() => {
+        setIdSong(song.id)
+    }, [song])
     return (
         <div className="col-span-2 p-3 overflow-y-scroll">
             <table className="table-auto w-full">
@@ -17,7 +25,10 @@ const ListSongs = () => {
                 <tbody>
                 {DataSongs.map((song, index) => (
 
-                        <tr key={index} className="h-12 bg-zinc-700 hover:bg-gray-700 hover:text-white">
+                        <tr key={index}
+                        className={`h-12 bg-zinc-700 hover:bg-gray-700 ${idSong === song.id &&'text-yellow-50 bg-gray-700'}`}
+                        onClick={() => handlePlaySong(song.id)}
+                        >
                             <td className="text-center">{index + 1}</td>
                             <td>{song.name}</td>
                             <td className="text-center">{song.author}</td>

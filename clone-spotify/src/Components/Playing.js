@@ -1,10 +1,24 @@
-import React from "react";
+import React, { useContext } from "react";
 import AudioPlayer from 'react-h5-audio-player'
 import 'react-h5-audio-player/lib/styles.css';
+import Songs from "../Context";
 const Playing = () => {
+    const {song, handleSetSong} = useContext(Songs)
+    const handleSongNext = () => {
+        handleSetSong(song.id + 1)
+    }
+    const handleSongPre = () => {
+        handleSetSong(song.id -1)
+    }
     return (
         <div>
-            <AudioPlayer src='https://cdn.discordapp.com/attachments/775740994595323954/775741533789224960/Alan_Walker_-_Sing_Me_To_SleepMP3_160K.mp3' />
+            <AudioPlayer
+            src={song.url} 
+            showSkipControls={true}
+            showJumpControls={false}
+            onClickNext={handleSongNext}
+            onClickPrevious={handleSongPre}
+            />
         </div>
     )
 }
