@@ -2,6 +2,7 @@
 import DetailSongs from './Components/DetailSongs';
 import ListSongs from './Components/ListSongs';
 import Navbar from './Components/Navbar';
+import Playing from './Components/Playing';
 import Songs from './Context';
 import DataSongs from './data/songs.json'
 function App() {
@@ -14,6 +15,7 @@ function App() {
           <DetailSongs/>
           <ListSongs/>
         </div>
+        <Playing/>
       </Songs.Provider>
     </div>
   );
