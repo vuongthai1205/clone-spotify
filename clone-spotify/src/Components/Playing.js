@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import AudioPlayer from 'react-h5-audio-player'
+import AudioPlayer, { RHAP_UI } from 'react-h5-audio-player'
 import 'react-h5-audio-player/lib/styles.css';
 import Songs from "../Context";
 const Playing = () => {
@@ -18,6 +18,14 @@ const Playing = () => {
             showJumpControls={false}
             onClickNext={handleSongNext}
             onClickPrevious={handleSongPre}
+            customProgressBarSection={
+                [
+                  RHAP_UI.CURRENT_TIME,
+                  RHAP_UI.PROGRESS_BAR,
+                  RHAP_UI.CURRENT_LEFT_TIME,
+                ]
+            } 
+            onEnded={handleSongNext}
             />
         </div>
     )
